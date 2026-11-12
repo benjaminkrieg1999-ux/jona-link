@@ -1,0 +1,268 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Jona Link</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+  /* Layout concept: one quiet column — a sequence of large plates and short, plain text,
+     no cards, no borders, no overlays. Restraint carries the prestige, not ornament. */
+  :root{
+    --bg:#15120f; --fg:#ece4d6; --fg-dim:#8d8275; --accent:#b5572c; --line:#2a241e;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#15120f; --fg:#ece4d6; --fg-dim:#8d8275; --accent:#b5572c; --line:#2a241e;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#15120f; --fg:#ece4d6; --fg-dim:#8d8275; --accent:#b5572c; --line:#2a241e;
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box}
+  html,body{background:var(--bg); color:var(--fg)}
+  body{
+    margin:0; font-family:"Inter",system-ui,-apple-system,sans-serif; font-size:16px;
+    line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent); color:#120e0a}
+
+  h1,h2,.display{
+    font-family:"Fraunces","Iowan Old Style",Georgia,serif; font-weight:500;
+    letter-spacing:-0.01em; text-wrap:balance; margin:0;
+  }
+
+  img{max-width:100%; display:block}
+
+  .wrap{
+    max-width:760px; margin:0 auto;
+    padding-left:max(20px, env(safe-area-inset-left,0px));
+    padding-right:max(20px, env(safe-area-inset-right,0px));
+  }
+
+  a{color:inherit}
+  a.inline{color:var(--accent); text-decoration-color:var(--accent); text-underline-offset:3px}
+
+  .eyebrow{
+    font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--fg-dim); font-weight:600;
+  }
+
+  /* ---------- nav ---------- */
+  header.site{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
+    background:rgba(21,18,15,0.9);
+  }
+  body::before{
+    content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px);
+    z-index:21; background:#15120f;
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding-block:18px; max-width:760px; margin:0 auto;
+  }
+  nav .mark{font-family:"Fraunces",serif; font-size:1rem}
+  nav ul{list-style:none; display:flex; gap:clamp(14px,3vw,26px); margin:0; padding:0; flex-wrap:wrap}
+  nav a{
+    text-decoration:none; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--fg-dim); font-weight:600;
+  }
+  nav a:hover, nav a:focus-visible{color:var(--fg)}
+
+  /* ---------- hero ---------- */
+  .hero{padding-block:clamp(44px,8vw,80px) clamp(28px,5vw,48px)}
+  .hero .eyebrow{display:block; margin-bottom:14px}
+  .hero h1{font-size:clamp(2rem,6vw,2.9rem); line-height:1.05}
+  .hero p.lede{color:var(--fg-dim); font-size:1.05rem; max-width:52ch; margin-top:18px}
+
+  figure{margin:0}
+  figure img{width:100%}
+  figcaption{
+    padding-top:10px; font-size:0.78rem; color:var(--fg-dim);
+  }
+
+  section{padding-block:clamp(44px,8vw,80px)}
+  section + section{border-top:1px solid var(--line)}
+  .section-head h2{font-size:clamp(1.35rem,2.6vw,1.7rem); margin-bottom:10px}
+  .section-head p{color:var(--fg-dim); max-width:56ch}
+
+  /* ---------- plates (work, rooms) ---------- */
+  .plates{display:flex; flex-direction:column; gap:clamp(44px,8vw,72px); margin-top:clamp(28px,5vw,44px)}
+
+  /* ---------- statement ---------- */
+  .statement blockquote{
+    margin:0; font-family:"Fraunces",serif; font-weight:500;
+    font-size:clamp(1.3rem,3vw,1.7rem); line-height:1.42; max-width:30ch;
+  }
+  .statement .by{margin-top:20px; color:var(--fg-dim); font-size:0.92rem; max-width:52ch}
+
+  /* ---------- education / lineage ---------- */
+  .lineage dt{color:var(--fg-dim); font-size:0.78rem; letter-spacing:0.05em; margin-top:18px}
+  .lineage dt:first-child{margin-top:0}
+  .lineage dd{margin:4px 0 0; font-size:1.02rem}
+
+  /* ---------- workshops ---------- */
+  .offer{border-top:1px solid var(--line); padding-block:16px}
+  .offer:last-of-type{border-bottom:1px solid var(--line)}
+  .offer h3{font-weight:500; font-size:1.05rem; font-family:"Fraunces",serif}
+  .offer .meta{color:var(--fg-dim); font-size:0.88rem; margin-top:4px}
+  .note{font-size:0.85rem; color:var(--fg-dim); margin-top:18px}
+
+  /* ---------- contact ---------- */
+  .ig-line{
+    display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-top:20px;
+    font-family:"Fraunces",serif; font-size:clamp(1.3rem,3vw,1.8rem);
+  }
+
+  footer{border-top:1px solid var(--line); padding-block:26px; color:var(--fg-dim); font-size:0.76rem}
+  footer .wrap{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<header class="site">
+  <nav class="wrap">
+    <span class="mark">Jona Link</span>
+    <ul>
+      <li><a href="#werk">Werk</a></li>
+      <li><a href="#raeume">Räume</a></li>
+      <li><a href="#workshops">Workshops</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <span class="eyebrow">Malerei &middot; Zeichnung &middot; Rauminstallation</span>
+    <h1>Jona Link</h1>
+    <p class="lede">Für Jona Link ist Kunst kein Ausgleich zum Leben, sondern das Leben selbst. Seine Arbeiten öffnen Räume, für die sonst kein Zugang und kein Platz mehr bleibt &ndash; abseits der digitalen Welt legen Kohle, Öl und Pigment frei, was auch unter der Oberfläche ist.</p>
+  </section>
+
+  <section id="werk" class="wrap">
+    <div class="section-head">
+      <h2>Werk</h2>
+      <p>Eine Auswahl aktueller Arbeiten &ndash; Öl, Kohle und Mischtechnik auf Leinwand und Papier.</p>
+    </div>
+    <div class="plates">
+      <figure>
+        <img src="/_blob/a34d78f009cac161a1d2d392bb6b6586" alt="Gemälde von Jona Link: kapuzentragende Figur reicht ein leuchtendes Objekt" loading="lazy">
+        <figcaption>Ohne Titel &middot; Öl und Mischtechnik auf Leinwand</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/4264643315c0b33dc1a9c2b5eeba8f3e" alt="Visceral gemalte Wandarbeit in Orange- und Rottönen" loading="lazy">
+        <figcaption>Rauminstallation, Detail</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/f139f5e44a2a535d15e4ba6efc1e6de5" alt="Dunkles Portrait, ein Gesicht löst sich aus braunem Grund" loading="lazy">
+        <figcaption>Portrait &middot; Öl auf Leinwand</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/04f2e9bee4052889e976e0cd6833b313" alt="Abstrakte Arbeit in Blau- und Goldtönen, kraterförmige Komposition" loading="lazy">
+        <figcaption>Ohne Titel &middot; Mischtechnik</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/b91d115b3cce970cbae28ec6b6f95027" alt="Kohlezeichnung: Rippen, Wirbel und Flügelformen" loading="lazy">
+        <figcaption>Kohle auf Papier</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/580d79da855271a4a846a63e5d7a9633" alt="Kohlezeichnung, wirbelnde, kokonartige Form" loading="lazy">
+        <figcaption>Kohle auf Papier</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/551be5eb5935b8887021453b36940e43" alt="Liegende skelettierte Figur in Kohle, großformatig" loading="lazy">
+        <figcaption>Kohle auf Papier, großformatig</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/44a271cb0f7afbc769aed67f29245a13" alt="Pastellfarbene abstrakte Arbeit, pflanzenartige Explosion aus Farbe" loading="lazy">
+        <figcaption>Ohne Titel &middot; Mischtechnik</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="statement">
+      <span class="eyebrow">Haltung</span>
+      <blockquote style="margin-top:16px">&bdquo;Kunst ist für mich kein Ausgleich zum Leben, sondern das Leben selbst. Ich will Räume öffnen, für die sonst kein Zugang und kein Platz mehr bleibt &ndash; abseits der digitalen Welt, dort wo sichtbar wird, was auch unter der Oberfläche ist.&ldquo;</blockquote>
+      <p class="by">Jona Link arbeitet an der Grenze zwischen Anatomie und Mythos, in Kohle, Öl und collagierten Materialien. Seine Ausstellungen und Workshops sind bewusst analoge Räume &ndash; Orte zum Innehalten, Berühren und Sehen, die dem Digitalen etwas entgegensetzen.</p>
+    </div>
+
+    <dl class="lineage" style="margin-top:40px">
+      <dt>Ausbildung</dt>
+      <dd>Akademie der Bildenden Künste, Klasse Jankowski</dd>
+      <dt>Lehrer</dt>
+      <dd>Andrej Dugin, Frederick D. Bunsen, Thomas Heger, Rolf Kilian</dd>
+    </dl>
+  </section>
+
+  <section id="raeume" class="wrap">
+    <div class="section-head">
+      <h2>Räume</h2>
+      <p>Ausgewählte Installationsansichten &ndash; Werke im Raum, nicht nur auf der Leinwand.</p>
+    </div>
+    <div class="plates">
+      <figure>
+        <img src="/_blob/edcb1fe820f5369b366be9d9b89dd9b6" alt="Freihängende, großformatige Leinwände in einem Dachraum mit Holzbalken" loading="lazy">
+        <figcaption>Rauminstallation, freihängende Leinwände</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/fcfc3cbf35d0b9bd12fd597b794b50ad" alt="Zwei großformatige Gemälde in einem abgedunkelten Ausstellungsraum" loading="lazy">
+        <figcaption>Ausstellungsansicht</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/416a6f59e04ca56a815e5047229c25a2" alt="Werkwand mit mehreren Arbeiten und Durchgang zu einem Nebenraum" loading="lazy">
+        <figcaption>Werkwand</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/d393f0c54d6cae4ddb3d8a6184ad7306" alt="Wandarbeit mit Skulptur aus Treibholz, Büchern und einem alten Koffer in einem Bahnhofsschalter mit der Aufschrift Gepäck" loading="lazy">
+        <figcaption>Fundstück-Installation, &bdquo;Gepäck&ldquo;</figcaption>
+      </figure>
+      <figure>
+        <img src="/_blob/e280a32c4e15d2969a68d9843e0a0a44" alt="Wand mit großformatigen, teils verhüllten Gemälden und einer Skulptur auf Sockel" loading="lazy">
+        <figcaption>Ausstellungsansicht</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="workshops" class="wrap">
+    <div class="section-head">
+      <h2>Workshops</h2>
+      <p>Praxisnahe Workshops im Rahmen von Ausstellungen &ndash; Räume, in denen Zeichnung und Farbe zur gemeinsamen, körperlichen Praxis werden: abseits von Bildschirmen, dort wo sonst kein Platz dafür bleibt.</p>
+    </div>
+
+    <div style="margin-top:clamp(24px,4vw,36px)">
+      <div class="offer">
+        <h3>Kohle &amp; Körper &ndash; anatomisches Zeichnen</h3>
+        <p class="meta">20&ndash;50 Teilnehmende &middot; 15&ndash;25&nbsp;€ pro Person</p>
+      </div>
+      <div class="offer">
+        <h3>Pigment-Ritual &ndash; Farbe als Praxis</h3>
+        <p class="meta">20&ndash;100 Teilnehmende &middot; 20&ndash;30&nbsp;€ pro Person</p>
+      </div>
+      <div class="offer">
+        <h3>Nachtzeichnung &ndash; schnelles Erfassen in Kohle</h3>
+        <p class="meta">20&ndash;60 Teilnehmende &middot; 15&ndash;20&nbsp;€ pro Person</p>
+      </div>
+    </div>
+    <p class="note">Dauer 1&ndash;3 Stunden, anpassbar an Ausstellung oder Festival. Termine und Orte stehen laufend auf Instagram.</p>
+  </section>
+
+  <section id="kontakt" class="wrap">
+    <span class="eyebrow">Für Veranstalter &amp; Presse</span>
+    <h2 style="font-size:clamp(1.35rem,2.6vw,1.7rem); margin-top:10px">Ausstellung, Workshop oder Presseanfrage?</h2>
+    <p style="color:var(--fg-dim); max-width:52ch; margin-top:12px">Jona Link ist buchbar für Ausstellungsbeteiligungen, Workshops vor Ort und Pressegespräche. Anfragen laufen über Instagram.</p>
+    <div class="ig-line">
+      <a class="inline" href="https://www.instagram.com/jona.link.2212/" target="_blank" rel="noopener">@jona.link.2212</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; Jona Link</span>
+    <span>Malerei &middot; Zeichnung &middot; Rauminstallation &middot; Workshops</span>
+  </div>
+</footer>
+
+</body></html>
